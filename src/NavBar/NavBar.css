@@ -1,0 +1,9 @@
+.navbar {
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-item {
+  margin-right: 5%;
+}
