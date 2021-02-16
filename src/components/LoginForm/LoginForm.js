@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 import ValidationError from "../ValidationError/ValidationError.js";
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +38,7 @@ export default class LoginForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.history.push(`/home`);
+    this.props.handleAuthSubmit();
   }
   validateEmail() {
     const email = this.state.email.value.trim();
@@ -95,3 +98,5 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+export default withRouter(LoginForm);
