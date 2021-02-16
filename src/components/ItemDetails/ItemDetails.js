@@ -1,9 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-export default class ItemDetails extends React.Component {
-  static defaultProps = {};
+class ItemDetails extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    },
+  };
 
-  // add function handle click event "send an email"
+  // redirect to SendRequestForm
+  handleSendRequest(event) {
+    event.preventDefault();
+    this.props.history.push(`/request`);
+  }
 
   render() {
     const { title, description, image } = this.props;
@@ -14,13 +23,12 @@ export default class ItemDetails extends React.Component {
           <img src={image} width="250" height="250" />
           <p>{description}</p>
         </div>
-        <button
-          type="button"
-          //onClick={this.handleSendEmail}
-        >
-          Send an request
+        <button type="button" onClick={(e) => this.handleSendRequest(e)}>
+          Send a request
         </button>
       </div>
     );
   }
 }
+
+export default withRouter(ItemDetails);

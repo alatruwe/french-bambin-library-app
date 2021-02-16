@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SendRequestForm component renders the UI as expected 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="text"
+    >
+      Object
+    </label>
+    <input
+      id="object"
+      name="object"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      htmlFor="text"
+    >
+      Message
+    </label>
+    <input
+      id="message"
+      name="message"
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+  <div>
+    <button
+      disabled="Email object is required"
+      type="submit"
+    >
+      Send
+    </button>
+  </div>
+</form>
+`;
