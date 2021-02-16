@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ValidationError from "../LoginForm/ValidationError.js";
+import ValidationError from "../ValidationError/ValidationError.js";
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -94,12 +94,7 @@ export default class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { firstName, lastName, email, password, repeatPassword } = this.state;
-    console.log("firstName: ", firstName.value);
-    console.log("lastName: ", lastName.value);
-    console.log("email: ", email.value);
-    console.log("Password: ", password.value);
-    console.log("Repeat Password: ", repeatPassword.value);
+    this.props.history.push(`/home`);
   }
 
   render() {

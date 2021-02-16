@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ValidationError from "./ValidationError.js";
+import ValidationError from "../ValidationError/ValidationError.js";
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -35,10 +35,7 @@ export default class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { email, password } = this.state;
-    console.log("Email: ", email.value);
-    console.log("Password: ", password.value);
-    this.props.history.push(`/`);
+    this.props.history.push(`/home`);
   }
   validateEmail() {
     const email = this.state.email.value.trim();
