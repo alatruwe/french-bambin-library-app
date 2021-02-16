@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddItem component renders the UI as expected 1`] = `
+<section>
+  <h2>
+    New Item
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="item-title-input"
+      >
+        Title
+      </label>
+      <input
+        id="item-title-input"
+        name="item-title"
+        onChange={[Function]}
+        type="text"
+      />
+    </div>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="item-content-input"
+      >
+        Description
+      </label>
+      <textarea
+        id="item-content-input"
+        name="item-content"
+        onChange={[Function]}
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="image"
+      >
+        Add a picture:
+      </label>
+      <input
+        accept="image/png, image/jpeg"
+        id="image"
+        name="image"
+        onChange={[Function]}
+        type="file"
+      />
+    </div>
+    <div
+      className="button"
+    >
+      <button
+        disabled="Please enter a title"
+        type="submit"
+      >
+        Add item
+      </button>
+    </div>
+  </form>
+</section>
+`;
