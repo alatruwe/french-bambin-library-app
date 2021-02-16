@@ -10,6 +10,7 @@ class NavBar extends Component {
         <Link to="/home">Home</Link>
 
         <Link to="/add-item">Add new item</Link>
+        <Link to="/request-history">Requests history</Link>
         <Link onClick={this.props.handleLogOut} to="/">
           Logout
         </Link>
