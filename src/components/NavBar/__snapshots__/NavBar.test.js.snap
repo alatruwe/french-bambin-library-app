@@ -1,24 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavBar component renders the component by default 1`] = `
-<nav
-  className="navbar"
->
-  <NavLink
-    exact={true}
-    to="/"
-  >
-    Home
-  </NavLink>
-  <Link
-    to="/login"
-  >
-    Log in
-  </Link>
-  <Link
-    to="/signup"
-  >
-    Sign up
-  </Link>
+<nav>
+  <div>
+    <Link
+      to="/signup"
+    >
+      Sign Up
+    </Link>
+    <Link
+      to="/login"
+    >
+      Log in
+    </Link>
+  </div>
 </nav>
 `;

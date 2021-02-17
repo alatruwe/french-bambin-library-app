@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./NavBar.css";
 
@@ -8,12 +8,17 @@ class NavBar extends Component {
     return (
       <div>
         <Link to="/home">Home</Link>
-
+        <br />
         <Link to="/add-item">Add new item</Link>
+        <br />
         <Link to="/request-history">Requests history</Link>
+        <br />
+        <Link to="/item-history">Items history</Link>
+        <br />
         <Link onClick={this.props.handleLogOut} to="/">
           Logout
         </Link>
+        <br />
       </div>
     );
   }

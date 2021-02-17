@@ -9,6 +9,7 @@ import ItemList from "./components/ItemList/ItemList";
 import SendRequestForm from "./components/SendRequestForm/SendRequestForm";
 import AddItem from "./components/AddItem/AddItem";
 import RequestHistory from "./components/RequestHistory/RequestHistory";
+import ItemHistory from "./components/ItemHistory/ItemHistory";
 
 class App extends Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends Component {
         <Route path="/request" component={SendRequestForm} />
         <Route path="/add-item" component={AddItem} />
         <Route path="/request-history" component={RequestHistory} />
+        <Route path="/item-history" component={ItemHistory} />
       </BrowserRouter>
     );
   }
