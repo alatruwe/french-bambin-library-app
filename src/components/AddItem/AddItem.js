@@ -11,6 +11,7 @@ export default class AddItem extends Component {
       image: "",
       touched: false,
       upload: false,
+      added: false,
     };
   }
   static defaultProps = {
@@ -57,7 +58,14 @@ export default class AddItem extends Component {
   // handle submit form
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.history.push(`/home`);
+    this.setState({
+      title: "",
+      description: "",
+      image: "",
+      touched: false,
+      upload: false,
+      added: true,
+    });
     // api POST here
   };
 
@@ -68,7 +76,7 @@ export default class AddItem extends Component {
   };
 
   handleDeletePicture = () => {
-    this.setState({ image: "", upload: false });
+    this.setState({ image: "", upload: false, touched: false });
   };
 
   render() {
@@ -87,6 +95,7 @@ export default class AddItem extends Component {
               type="text"
               id="item-title-input"
               name="item-title"
+              value={this.state.title}
               onChange={(e) => this.updateItemTitle(e.target.value)}
             />
             {this.state.touched && <ValidationError message={titleError} />}
@@ -96,6 +105,7 @@ export default class AddItem extends Component {
             <textarea
               id="item-content-input"
               name="item-content"
+              value={this.state.description}
               onChange={(e) => this.updateItemDescription(e.target.value)}
             />
             {this.state.touched && <ValidationError message={contentError} />}
@@ -125,6 +135,7 @@ export default class AddItem extends Component {
             >
               Add item
             </button>
+            {this.state.added && <p>Item added!</p>}
           </div>
         </form>
       </section>

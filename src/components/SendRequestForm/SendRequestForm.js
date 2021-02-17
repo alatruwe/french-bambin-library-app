@@ -13,6 +13,7 @@ export default class SendRequest extends Component {
         value: "",
         touched: false,
       },
+      sent: false,
     };
   }
   static defaultProps = {
@@ -33,10 +34,21 @@ export default class SendRequest extends Component {
     });
   }
 
-  handleSubmit(event) {
+  // API call to send request
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.props.history.push(`/home`);
-  }
+    this.setState({
+      object: {
+        value: "",
+        touched: false,
+      },
+      message: {
+        value: "",
+        touched: false,
+      },
+      sent: true,
+    });
+  };
   validateObject() {
     const object = this.state.object.value.trim();
     if (object.length === 0) {
@@ -61,6 +73,7 @@ export default class SendRequest extends Component {
           <input
             type="text"
             name="object"
+            value={this.state.object.value}
             id="object"
             placeholder="I'm interested in your item"
             required
@@ -75,6 +88,7 @@ export default class SendRequest extends Component {
           <textarea
             type="text"
             name="message"
+            value={this.state.message.value}
             id="message"
             onChange={(e) => this.updateMessage(e.target.value)}
           />
@@ -90,6 +104,7 @@ export default class SendRequest extends Component {
           >
             Send
           </button>
+          {this.state.sent && <p>Sent!</p>}
         </div>
       </form>
     );
