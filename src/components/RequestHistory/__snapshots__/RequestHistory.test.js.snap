@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestHistory component renders the UI as expected 1`] = `
+<section>
+  <ul>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Sami et Julie à la plage
+        </h2>
+        <h1>
+          Request object: 
+          Hello
+        </h1>
+        <p>
+          Request message: 
+          How are you?
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Le petit Chaperon rouge
+        </h2>
+        <h1>
+          Request object: 
+          Hi!
+        </h1>
+        <p>
+          Request message: 
+          I want to get that book please
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Le grand imagier de la nature
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Ludanimo
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Mon amour
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          Le Verger, jeu de cartes
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          La Fontaine raconte aux enfants
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+    <li>
+      <section>
+        <h2>
+          Item: 
+          La tour Eiffel se balade à Paris
+        </h2>
+        <h1>
+          Request object: 
+          https:/
+        </h1>
+        <p>
+          Request message: 
+          Munis de leur seau 
+        </p>
+        <p>
+          Sent: 
+          Feb 17th 2021
+        </p>
+      </section>
+    </li>
+  </ul>
+</section>
+`;
