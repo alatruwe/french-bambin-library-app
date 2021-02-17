@@ -1,14 +1,9 @@
-import React from "react";
-import ItemDetails from "../ItemDetails/ItemDetails";
-
 export default function Item(props) {
   return (
     <section>
-      <ItemDetails
-        title={props.title}
-        image={props.image}
-        description={props.description}
-      />
+      <h2>{props.title}</h2>
+      <img src={props.image} width="250" height="250" />
+      <p>{props.description}</p>
     </section>
   );
 }
