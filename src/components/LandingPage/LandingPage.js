@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import "./LandingPage.css";
 
 class LandingPage extends Component {
@@ -14,9 +14,6 @@ class LandingPage extends Component {
             <h3>Browse books and games</h3>
           </header>
           <p>
-            [<em>placeholder for screenshot of the items list interface</em>]
-          </p>
-          <p>
             French Bambin Library helps you connect with other parents and find
             books and games written in french.
           </p>
@@ -25,9 +22,6 @@ class LandingPage extends Component {
           <header>
             <h3>Connect, share and exchange</h3>
           </header>
-          <p>
-            [<em>placeholder for screenshot of user checkout cart</em>]
-          </p>
           <p>
             French Bambin Library provides you with a quick and simple interface
             that helps you browse french books and games.
@@ -38,9 +32,6 @@ class LandingPage extends Component {
           <header>
             <h3>Add books and games</h3>
           </header>
-          <p>
-            [<em>placeholder for screenshot to add a new item interface</em>]
-          </p>
           <p>
             French Bambin Library provides you with a quick and simple interface
             that helps you share and list your books and games.
