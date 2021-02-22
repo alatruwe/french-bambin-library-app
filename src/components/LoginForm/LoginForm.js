@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
+import AuthApiService from "../../services/auth-api-services";
+import TokenService from "../../services/token-services";
 import ValidationError from "../ValidationError/ValidationError.js";
 
 class LoginForm extends Component {
@@ -15,6 +16,7 @@ class LoginForm extends Component {
         value: "",
         touched: false,
       },
+      error: null,
     };
   }
   static defaultProps = {
@@ -34,12 +36,6 @@ class LoginForm extends Component {
       },
     });
   }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.history.push(`/home`);
-    this.props.handleAuthSubmit();
-  }
   validateEmail() {
     const email = this.state.email.value.trim();
     if (email.length === 0) {
@@ -57,12 +53,33 @@ class LoginForm extends Component {
     }
   }
 
+  handleSubmitJwtAuth = (ev) => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    const { email, password } = ev.target;
+
+    AuthApiService.postLogin({
+      email: email.value,
+      user_password: password.value,
+    })
+      .then((res) => {
+        email.value = "";
+        password.value = "";
+        TokenService.saveAuthToken(res.authToken);
+        this.props.history.push(`/home`);
+        this.props.handleAuthSubmit();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
+  };
+
   render() {
     const emailError = this.validateEmail();
     const passwordError = this.validatePassword();
 
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
+      <form onSubmit={this.handleSubmitJwtAuth}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input

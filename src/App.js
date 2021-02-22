@@ -10,6 +10,7 @@ import SendRequestForm from "./components/SendRequestForm/SendRequestForm";
 import AddItem from "./components/AddItem/AddItem";
 import RequestHistory from "./components/RequestHistory/RequestHistory";
 import ItemHistory from "./components/ItemHistory/ItemHistory";
+import TokenService from "./services/token-services";
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +21,13 @@ class App extends Component {
   }
 
   handleAuthSubmit = () => {
-    this.setState({ auth: true });
+    if (TokenService.hasAuthToken()) {
+      this.setState({ auth: true });
+    }
   };
 
   handleLogOut = () => {
+    TokenService.clearAuthToken();
     this.setState({ auth: false });
   };
 
