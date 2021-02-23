@@ -11,15 +11,19 @@ const ItemsApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
-  /*getArticle(articleId) {
-    return fetch(`${config.API_ENDPOINT}/articles/${articleId}`, {
+
+  postitem(item) {
+    return fetch(`${config.API_ENDPOINT}/add-item`, {
+      method: "POST",
       headers: {
+        "content-type": "application/json",
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
+      body: JSON.stringify(item),
     }).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
-  },*/
+  },
 };
 
 export default ItemsApiService;

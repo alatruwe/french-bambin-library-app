@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
 import PicturePreview from "../PicturePreview/PicturePreview";
+import ItemsApiService from "../../services/items-api-services";
 
 export default class AddItem extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class AddItem extends Component {
       touched: false,
       upload: false,
       added: false,
+      error: null,
     };
   }
   static defaultProps = {
@@ -58,6 +60,11 @@ export default class AddItem extends Component {
   // handle submit form
   handleSubmit = (e) => {
     e.preventDefault();
+
+    const { title, description, image } = e.target;
+    console.log(title.value);
+    console.log(description.value);
+    console.log(image.value);
     this.setState({
       title: "",
       description: "",
@@ -65,8 +72,22 @@ export default class AddItem extends Component {
       touched: false,
       upload: false,
       added: true,
+      error: null,
     });
-    // api POST here
+
+    ItemsApiService.postitem({
+      title: title.value,
+      description: description.value,
+      image: image.value,
+    })
+      .then((res) => {
+        title.value = "";
+        description.value = "";
+        image.value = "";
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   // picture preview
@@ -93,8 +114,8 @@ export default class AddItem extends Component {
             <label htmlFor="item-title-input">Title</label>
             <input
               type="text"
-              id="item-title-input"
-              name="item-title"
+              id="title"
+              name="title"
               value={this.state.title}
               onChange={(e) => this.updateItemTitle(e.target.value)}
             />
@@ -103,8 +124,8 @@ export default class AddItem extends Component {
           <div className="field">
             <label htmlFor="item-content-input">Description</label>
             <textarea
-              id="item-content-input"
-              name="item-content"
+              id="description"
+              name="description"
               value={this.state.description}
               onChange={(e) => this.updateItemDescription(e.target.value)}
             />
