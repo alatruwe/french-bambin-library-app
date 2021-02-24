@@ -3,6 +3,7 @@ import Item from "../Item/Item";
 import "./ItemList.css";
 import data from "../../data.js";
 import ItemsApiService from "../../services/items-api-services";
+import config from "../../config";
 
 export default class ItemList extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class ItemList extends React.Component {
 
   render() {
     const items = this.state.items;
+    let source = config.IMAGE_URL;
     return (
       <section className="item-list">
         <h1>Items list</h1>
@@ -42,7 +44,7 @@ export default class ItemList extends React.Component {
             <li key={item.id}>
               <Item
                 title={item.title}
-                image={item.img}
+                image={source + item.image}
                 description={item.description}
               />
               <button type="button" onClick={(e) => this.handleSendRequest(e)}>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
 import PicturePreview from "../PicturePreview/PicturePreview";
 import ItemsApiService from "../../services/items-api-services";
-
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +9,7 @@ export default class AddItem extends Component {
       title: "",
       description: "",
       image: "",
+      src: "",
       touched: false,
       upload: false,
       added: false,
@@ -51,39 +51,45 @@ export default class AddItem extends Component {
 
   // image validation
   validateItemPicture() {
-    const picture = this.state.image;
+    const picture = this.state.src;
     if (picture.length === 0) {
       return "Please add a picture";
     }
   }
 
-  // handle submit form
+  // handle submit
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { title, description, image } = e.target;
-    console.log(title.value);
-    console.log(description.value);
-    console.log(image.value);
-    this.setState({
-      title: "",
-      description: "",
-      image: "",
-      touched: false,
-      upload: false,
-      added: true,
-      error: null,
-    });
+    // get media info
+    const file = this.state.image;
+    const title = this.state.title;
+    const description = this.state.description;
+    // build form data
+    const fd = new FormData();
+    fd.append("image", file);
+    fd.append("title", title);
+    fd.append("description", description);
 
-    ItemsApiService.postitem({
-      title: title.value,
-      description: description.value,
-      image: image.value,
-    })
+    // API POST request
+    ItemsApiService.postitem(fd)
+      // reset form fields
       .then((res) => {
-        title.value = "";
-        description.value = "";
-        image.value = "";
+        e.target.title.value = "";
+        e.target.description.value = "";
+        e.target.image.value = "";
+      })
+      // change state
+      .then(() => {
+        this.setState({
+          title: "",
+          description: "",
+          image: "",
+          touched: false,
+          upload: false,
+          added: true,
+          error: null,
+        });
       })
       .catch((res) => {
         this.setState({ error: res.error });
@@ -92,8 +98,9 @@ export default class AddItem extends Component {
 
   // picture preview
   loadPicture = (event) => {
-    const src = URL.createObjectURL(event.target.files[0]);
-    this.setState({ image: src, upload: true, touched: true });
+    const image = event.target.files[0];
+    const src = URL.createObjectURL(image);
+    this.setState({ image: image, src: src, upload: true, touched: true });
   };
 
   handleDeletePicture = () => {
@@ -104,7 +111,7 @@ export default class AddItem extends Component {
     const titleError = this.validateItemTitle();
     const contentError = this.validateItemDescription();
     const pictureError = this.validateItemPicture();
-    const src = this.state.image;
+    const src = this.state.src;
 
     return (
       <section>
