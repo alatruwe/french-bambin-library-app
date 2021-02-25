@@ -1,7 +1,6 @@
 import React from "react";
 import Item from "../Item/Item";
 import "./ItemList.css";
-import data from "../../data.js";
 import ItemsApiService from "../../services/items-api-services";
 import config from "../../config";
 
@@ -27,12 +26,6 @@ export default class ItemList extends React.Component {
     });
   }
 
-  // redirect to SendRequestForm
-  handleSendRequest(event) {
-    event.preventDefault();
-    this.props.history.push(`/request`);
-  }
-
   render() {
     const items = this.state.items;
     let source = config.IMAGE_URL;
@@ -46,10 +39,8 @@ export default class ItemList extends React.Component {
                 title={item.title}
                 image={source + item.image}
                 description={item.description}
+                id={item.id}
               />
-              <button type="button" onClick={(e) => this.handleSendRequest(e)}>
-                Send a request
-              </button>
             </li>
           ))}
         </ul>

@@ -23,6 +23,19 @@ const ItemsApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+
+  sendEmail(info) {
+    return fetch(`${config.API_ENDPOINT}/send-request`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(info),
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
 };
 
 export default ItemsApiService;
