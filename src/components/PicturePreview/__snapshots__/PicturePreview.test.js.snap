@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PicturePreview component renders the UI as expected 1`] = `
+Array [
+  <img
+    id="output"
+    width="200"
+  />,
+  <button>
+    x
+  </button>,
+]
+`;

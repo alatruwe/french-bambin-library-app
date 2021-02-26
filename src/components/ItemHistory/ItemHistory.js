@@ -1,9 +1,14 @@
 import React from "react";
 import Item from "../Item/Item";
-
-import data from "../../data.js";
-
+import ItemsApiService from "../../services/items-api-services";
+import config from "../../config";
 export default class ItemHistory extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+    };
+  }
   static defaultProps = {
     history: {
       push: () => {},
@@ -11,27 +16,30 @@ export default class ItemHistory extends React.Component {
   };
 
   // API call here to get data
-
-  // API call to delete data
-  handleDeleteItem = (event) => {
-    event.preventDefault();
-    console.log("Item deleted");
-    this.props.history.push("./item-history");
-  };
+  componentDidMount() {
+    ItemsApiService.getItemHistory().then((res) => {
+      this.setState({ items: res });
+      console.log(this.state.items);
+    });
+  }
 
   render() {
+    const items = this.state.items;
+    let source = config.IMAGE_URL;
     return (
       <section className="item-list">
         <h1>Items history</h1>
         <ul>
-          {data.map((item) => (
+          {items.map((item) => (
             <li key={item.id}>
               <Item
                 title={item.title}
-                image={item.img}
+                image={source + item.image}
                 description={item.description}
+                id={item.id}
+                userHistory={true}
+                itemHasBeenDeleted={this.itemHasBeenDeleted}
               />
-              <button onClick={this.handleDeleteItem}>Delete item</button>
             </li>
           ))}
         </ul>

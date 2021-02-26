@@ -1,12 +1,14 @@
 import React from "react";
 import Item from "../Item/Item";
 import "./ItemList.css";
-import data from "../../data.js";
+import ItemsApiService from "../../services/items-api-services";
+import config from "../../config";
 
 export default class ItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      items: [],
       touched: false,
     };
   }
@@ -16,29 +18,30 @@ export default class ItemList extends React.Component {
     },
   };
 
-  // redirect to SendRequestForm
-  handleSendRequest(event) {
-    event.preventDefault();
-    this.props.history.push(`/request`);
+  // API call here to get data
+  componentDidMount() {
+    ItemsApiService.getItems().then((res) => {
+      this.setState({ items: res });
+      console.log(this.state.items);
+    });
   }
 
-  // API call here to get data
-
   render() {
+    const items = this.state.items;
+    let source = config.IMAGE_URL;
     return (
       <section className="item-list">
         <h1>Items list</h1>
         <ul>
-          {data.map((item) => (
+          {items.map((item) => (
             <li key={item.id}>
               <Item
                 title={item.title}
-                image={item.img}
+                image={source + item.image}
                 description={item.description}
+                id={item.id}
+                userHistory={false}
               />
-              <button type="button" onClick={(e) => this.handleSendRequest(e)}>
-                Send a request
-              </button>
             </li>
           ))}
         </ul>

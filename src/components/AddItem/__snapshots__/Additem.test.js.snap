@@ -17,10 +17,11 @@ exports[`AddItem component renders the UI as expected 1`] = `
         Title
       </label>
       <input
-        id="item-title-input"
-        name="item-title"
+        id="title"
+        name="title"
         onChange={[Function]}
         type="text"
+        value=""
       />
     </div>
     <div
@@ -32,9 +33,10 @@ exports[`AddItem component renders the UI as expected 1`] = `
         Description
       </label>
       <textarea
-        id="item-content-input"
-        name="item-content"
+        id="description"
+        name="description"
         onChange={[Function]}
+        value=""
       />
     </div>
     <div>

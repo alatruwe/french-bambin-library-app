@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-
+import AuthApiService from "../../services/auth-api-services";
+import TokenService from "../../services/token-services";
 import ValidationError from "../ValidationError/ValidationError.js";
 
 class SignupForm extends Component {
@@ -96,8 +97,29 @@ class SignupForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.history.push(`/home`);
-    this.props.handleAuthSubmit();
+
+    const { firstName, lastName, email, password } = event.target;
+
+    this.setState({ error: null });
+
+    AuthApiService.postUser({
+      first_name: firstName.value,
+      last_name: lastName.value,
+      email: email.value,
+      user_password: password.value,
+    })
+      .then((res) => {
+        firstName.value = "";
+        lastName.value = "";
+        email.value = "";
+        password.value = "";
+        TokenService.saveAuthToken(res.authToken);
+        this.props.history.push(`/home`);
+        this.props.handleAuthSubmit();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   }
 
   render() {

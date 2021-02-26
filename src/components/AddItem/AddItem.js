@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
 import PicturePreview from "../PicturePreview/PicturePreview";
-
+import ItemsApiService from "../../services/items-api-services";
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +9,11 @@ export default class AddItem extends Component {
       title: "",
       description: "",
       image: "",
+      src: "",
       touched: false,
       upload: false,
       added: false,
+      error: null,
     };
   }
   static defaultProps = {
@@ -49,30 +51,56 @@ export default class AddItem extends Component {
 
   // image validation
   validateItemPicture() {
-    const picture = this.state.image;
-    if (picture.length === 0) {
+    const picture = this.state.upload;
+    if (picture === false) {
       return "Please add a picture";
     }
   }
 
-  // handle submit form
+  // handle submit
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState({
-      title: "",
-      description: "",
-      image: "",
-      touched: false,
-      upload: false,
-      added: true,
-    });
-    // api POST here
+
+    // get media info
+    const file = this.state.image;
+    const title = this.state.title;
+    const description = this.state.description;
+    // build form data
+    const fd = new FormData();
+    fd.append("image", file);
+    fd.append("title", title);
+    fd.append("description", description);
+
+    // API POST request
+    ItemsApiService.postitem(fd)
+      // reset form fields
+      .then((res) => {
+        e.target.title.value = "";
+        e.target.description.value = "";
+        e.target.image.value = "";
+      })
+      // change state
+      .then(() => {
+        this.setState({
+          title: "",
+          description: "",
+          image: "",
+          touched: false,
+          upload: false,
+          added: true,
+          error: null,
+        });
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   // picture preview
   loadPicture = (event) => {
-    const src = URL.createObjectURL(event.target.files[0]);
-    this.setState({ image: src, upload: true, touched: true });
+    const image = event.target.files[0];
+    const src = URL.createObjectURL(image);
+    this.setState({ image: image, src: src, upload: true, touched: true });
   };
 
   handleDeletePicture = () => {
@@ -83,7 +111,7 @@ export default class AddItem extends Component {
     const titleError = this.validateItemTitle();
     const contentError = this.validateItemDescription();
     const pictureError = this.validateItemPicture();
-    const src = this.state.image;
+    const src = this.state.src;
 
     return (
       <section>
@@ -93,8 +121,8 @@ export default class AddItem extends Component {
             <label htmlFor="item-title-input">Title</label>
             <input
               type="text"
-              id="item-title-input"
-              name="item-title"
+              id="title"
+              name="title"
               value={this.state.title}
               onChange={(e) => this.updateItemTitle(e.target.value)}
             />
@@ -103,8 +131,8 @@ export default class AddItem extends Component {
           <div className="field">
             <label htmlFor="item-content-input">Description</label>
             <textarea
-              id="item-content-input"
-              name="item-content"
+              id="description"
+              name="description"
               value={this.state.description}
               onChange={(e) => this.updateItemDescription(e.target.value)}
             />

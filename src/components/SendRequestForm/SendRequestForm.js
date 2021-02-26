@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
+import ItemsApiService from "../../services/items-api-services";
 
 export default class SendRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      object: {
+      subject: {
         value: "",
         touched: false,
       },
@@ -22,8 +23,8 @@ export default class SendRequest extends Component {
     },
   };
 
-  updateObject(object) {
-    this.setState({ object: { value: object, touched: true } });
+  updateSubject(subject) {
+    this.setState({ subject: { value: subject, touched: true } });
   }
   updateMessage(message) {
     this.setState({
@@ -33,26 +34,10 @@ export default class SendRequest extends Component {
       },
     });
   }
-
-  // API call to send request
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.setState({
-      object: {
-        value: "",
-        touched: false,
-      },
-      message: {
-        value: "",
-        touched: false,
-      },
-      sent: true,
-    });
-  };
-  validateObject() {
-    const object = this.state.object.value.trim();
-    if (object.length === 0) {
-      return "Email object is required";
+  validateSubject() {
+    const subject = this.state.subject.value.trim();
+    if (subject.length === 0) {
+      return "Email subject is required";
     }
   }
   validateMessage() {
@@ -62,8 +47,48 @@ export default class SendRequest extends Component {
     }
   }
 
+  // API call to send request
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const itemId = this.props.location.itemId;
+    const subject = this.state.subject.value;
+    const message = this.state.message.value;
+
+    let info = {
+      subject: subject,
+      message: message,
+      item_id: itemId.toString(),
+    };
+    console.log(info);
+
+    // API POST request
+    ItemsApiService.sendEmail(info)
+      // reset form fields
+      .then((res) => {
+        event.target.subject.value = "";
+        event.target.message.value = "";
+      })
+      // change state
+      .then(() => {
+        this.setState({
+          subject: {
+            value: "",
+            touched: false,
+          },
+          message: {
+            value: "",
+            touched: false,
+          },
+          sent: true,
+        });
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
+  };
+
   render() {
-    const objectError = this.validateObject();
+    const subjectError = this.validateSubject();
     const messageError = this.validateMessage();
 
     return (
@@ -72,15 +97,15 @@ export default class SendRequest extends Component {
           <label htmlFor="text">Object</label>
           <input
             type="text"
-            name="object"
-            value={this.state.object.value}
-            id="object"
+            name="subject"
+            value={this.state.subject.value}
+            id="subject"
             placeholder="I'm interested in your item"
             required
-            onChange={(e) => this.updateObject(e.target.value)}
+            onChange={(e) => this.updateSubject(e.target.value)}
           />
-          {this.state.object.touched && (
-            <ValidationError message={objectError} />
+          {this.state.subject.touched && (
+            <ValidationError message={subjectError} />
           )}
         </div>
         <div className="form-group">
@@ -100,7 +125,7 @@ export default class SendRequest extends Component {
         <div>
           <button
             type="submit"
-            disabled={this.validateObject() || this.validateMessage()}
+            disabled={this.validateSubject() || this.validateMessage()}
           >
             Send
           </button>
