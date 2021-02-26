@@ -36,6 +36,27 @@ const ItemsApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+
+  getItemHistory() {
+    return fetch(`${config.API_ENDPOINT}/item-history`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+
+  deleteItem(id) {
+    return fetch(`${config.API_ENDPOINT}/item-history/item/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.end
+    );
+  },
 };
 
 export default ItemsApiService;

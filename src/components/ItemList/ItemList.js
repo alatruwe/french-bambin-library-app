@@ -40,6 +40,7 @@ export default class ItemList extends React.Component {
                 image={source + item.image}
                 description={item.description}
                 id={item.id}
+                userHistory={false}
               />
             </li>
           ))}
