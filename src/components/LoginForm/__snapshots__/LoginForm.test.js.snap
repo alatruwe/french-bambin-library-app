@@ -1,46 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginForm component renders the UI as expected 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="email"
-    >
-      Email
-    </label>
-    <input
-      id="email"
-      name="email"
-      onChange={[Function]}
-      type="text"
-    />
-  </div>
-  <div
-    className="form-group"
-  >
-    <label
-      htmlFor="password"
-    >
-      Password
-    </label>
-    <input
-      id="password"
-      name="password"
-      onChange={[Function]}
-      type="password"
-    />
-  </div>
-  <div>
-    <button
-      disabled="Email is required"
-      type="submit"
-    >
-      Log In
-    </button>
-  </div>
-</form>
+exports[`LoginForm component renders the component by default 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;

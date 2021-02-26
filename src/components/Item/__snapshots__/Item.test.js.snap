@@ -1,21 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item component renders the UI as expected 1`] = `
-<section>
-  <div>
-    <div>
-      <h2 />
-      <img
-        height="250"
-        width="250"
-      />
-      <p />
-    </div>
-    <button
-      type="button"
-    >
-      Send an request
-    </button>
-  </div>
-</section>
+exports[`Item component renders the component by default 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
 `;

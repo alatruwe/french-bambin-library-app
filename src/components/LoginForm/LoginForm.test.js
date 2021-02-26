@@ -1,17 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import LoginForm from "./LoginForm";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 
 describe(`LoginForm component`, () => {
-  it("renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<LoginForm />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it("renders the UI as expected", () => {
-    const tree = renderer.create(<LoginForm />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("renders the component by default", () => {
+    const wrapper = shallow(<LoginForm />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

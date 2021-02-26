@@ -8,6 +8,18 @@ exports[`NavBar component renders the component by default 1`] = `
     >
       Sign Up
     </Link>
+    <br />
+    <Link
+      to={
+        Object {
+          "demo": true,
+          "pathname": "/login",
+        }
+      }
+    >
+      Demo
+    </Link>
+    <br />
     <Link
       to="/login"
     >

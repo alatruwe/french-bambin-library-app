@@ -1,17 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Item from "./Item";
-import renderer from "react-test-renderer";
+import toJson from "enzyme-to-json";
+import { shallow } from "enzyme";
 
 describe(`Item component`, () => {
-  it("renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<Item />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it("renders the UI as expected", () => {
-    const tree = renderer.create(<Item />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("renders the component by default", () => {
+    const wrapper = shallow(<Item />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
