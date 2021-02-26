@@ -74,6 +74,15 @@ class LoginForm extends Component {
       });
   };
 
+  renderDemo() {
+    return (
+      <div>
+        <p>Demo email: bill@email.com</p>
+        <p>Demo password: 22AAaa@@</p>
+      </div>
+    );
+  }
+
   render() {
     const emailError = this.validateEmail();
     const passwordError = this.validatePassword();
@@ -111,6 +120,7 @@ class LoginForm extends Component {
             Log In
           </button>
         </div>
+        {this.props.location.demo ? this.renderDemo() : <></>}
       </form>
     );
   }

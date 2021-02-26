@@ -25,7 +25,16 @@ class NavBar extends Component {
     return (
       <div>
         <Link to="/signup">Sign Up</Link>
-
+        <br />
+        <Link
+          to={{
+            pathname: `/login`,
+            demo: true,
+          }}
+        >
+          Demo
+        </Link>
+        <br />
         <Link to="/login">Log in</Link>
       </div>
     );
