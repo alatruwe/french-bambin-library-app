@@ -51,8 +51,8 @@ export default class AddItem extends Component {
 
   // image validation
   validateItemPicture() {
-    const picture = this.state.src;
-    if (picture.length === 0) {
+    const picture = this.state.upload;
+    if (picture === false) {
       return "Please add a picture";
     }
   }

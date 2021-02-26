@@ -13,10 +13,13 @@ exports[`SendRequestForm component renders the UI as expected 1`] = `
       Object
     </label>
     <input
-      id="object"
-      name="object"
+      id="subject"
+      name="subject"
       onChange={[Function]}
+      placeholder="I'm interested in your item"
+      required={true}
       type="text"
+      value=""
     />
   </div>
   <div
@@ -27,16 +30,17 @@ exports[`SendRequestForm component renders the UI as expected 1`] = `
     >
       Message
     </label>
-    <input
+    <textarea
       id="message"
       name="message"
       onChange={[Function]}
       type="text"
+      value=""
     />
   </div>
   <div>
     <button
-      disabled="Email object is required"
+      disabled="Email subject is required"
       type="submit"
     >
       Send
