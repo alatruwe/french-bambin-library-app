@@ -19,7 +19,6 @@ export default class ItemHistory extends React.Component {
   componentDidMount() {
     ItemsApiService.getItemHistory().then((res) => {
       this.setState({ items: res });
-      console.log(this.state.items);
     });
   }
 

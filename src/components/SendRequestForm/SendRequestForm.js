@@ -59,7 +59,6 @@ export default class SendRequest extends Component {
       message: message,
       item_id: itemId.toString(),
     };
-    console.log(info);
 
     // API POST request
     ItemsApiService.sendEmail(info)

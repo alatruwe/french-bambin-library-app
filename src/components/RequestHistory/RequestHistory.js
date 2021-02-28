@@ -3,10 +3,6 @@ import Request from "./Request/Request";
 import requestData from "../../requestData.js";
 
 export default class RequestHistory extends React.Component {
-  static defaultProps = {};
-
-  // API call here to get data
-
   render() {
     return (
       <section>

@@ -22,7 +22,6 @@ export default class ItemList extends React.Component {
   componentDidMount() {
     ItemsApiService.getItems().then((res) => {
       this.setState({ items: res });
-      console.log(this.state.items);
     });
   }
 
