@@ -5,38 +5,57 @@ class LandingPage extends Component {
   render() {
     return (
       <div>
-        <header role="banner">
-          <h1>French Bambin Library</h1>
-          <h2>sharing french culture one book at a time</h2>
-        </header>
-        <section>
+        <header className="wrapper">
+          <h1 className="text-intro">
+            <span>French</span>
+            <span>Bambin</span>
+            <span>Library</span>{" "}
+          </h1>
+          <h2 className="text-intro">
+            Sharing french culture one book at a time
+          </h2>
+        </header>{" "}
+        <section className="wrapper">
           <header>
-            <h3>Browse books and games</h3>
+            <h3>
+              <span>Browse books</span>
+            </h3>
           </header>
           <p>
             French Bambin Library helps you connect with other parents and find
-            books and games written in french.
+            books written in french.
           </p>
         </section>
-        <section>
+        <section className="wrapper">
           <header>
-            <h3>Connect, share and exchange</h3>
+            <h3>
+              <span>Connect, share and exchange</span>
+            </h3>
           </header>
           <p>
             French Bambin Library provides you with a quick and simple interface
-            that helps you browse french books and games.
+            that helps you browse french books.
           </p>
           <p>Connect with the community to share and exchange.</p>
         </section>
-        <section>
+        <section className="wrapper">
           <header>
-            <h3>Add books and games</h3>
+            <h3>
+              <span>Add books</span>
+            </h3>
           </header>
           <p>
             French Bambin Library provides you with a quick and simple interface
-            that helps you share and list your books and games.
+            that helps you share and list your books.
           </p>
         </section>
+        <ul className="colorful-border">
+          <li className="colorful-border-blue"></li>
+          <li className="colorful-border-aqua"></li>
+          <li className="colorful-border-green"></li>
+          <li className="colorful-border-yellow"></li>
+          <li className="colorful-border-orange"></li>
+        </ul>
       </div>
     );
   }

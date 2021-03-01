@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ItemsApiService from "../../services/items-api-services";
+import "./Item.css";
 
 class Item extends React.Component {
   constructor(props) {
@@ -36,17 +37,45 @@ class Item extends React.Component {
     });
   };
 
+  // button styling
+  buttonsColors = () => {
+    let colors = [
+      "#FD0100",
+      "#F76915",
+      "#EEDE04",
+      "#A0D636",
+      "#2FA236",
+      "#333ED4",
+    ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    return color;
+  };
+
   renderDeleteButton() {
     return (
       <div>
-        <button onClick={this.handleDeleteItem}>Delete item</button>
+        <button
+          className="btn"
+          type="button"
+          style={{ color: this.buttonsColors() }}
+          onClick={this.handleDeleteItem}
+        >
+          Delete item
+        </button>
       </div>
     );
   }
   renderRequestButton() {
     return (
       <div>
-        <button type="button" onClick={(e) => this.handleSendRequest(e)}>
+        <button
+          className="btn"
+          type="button"
+          style={{
+            color: this.buttonsColors(),
+          }}
+          onClick={(e) => this.handleSendRequest(e)}
+        >
           Send a request
         </button>
       </div>
@@ -55,13 +84,16 @@ class Item extends React.Component {
 
   render() {
     return (
-      <section>
-        <h2>{this.props.title}</h2>
-        <p>{this.props.description}</p>
-        {this.props.userHistory
-          ? this.renderDeleteButton()
-          : this.renderRequestButton()}
-        {this.state.deleted && <p>Deleted!</p>}
+      <section className="item">
+        <div className="item-vertical-border"></div>
+        <div className="item-details">
+          <h3 className="item-title">{this.props.title}</h3>
+          <p className="item-text">{this.props.description}</p>
+          {this.props.userHistory
+            ? this.renderDeleteButton()
+            : this.renderRequestButton()}
+          {this.state.deleted && <p>Deleted!</p>}
+        </div>
       </section>
     );
   }

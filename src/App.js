@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import LoginForm from "./components/LoginForm/LoginForm";
 import SignupForm from "./components/SignupForm/SignupForm";
-
 import LandingPage from "./components/LandingPage/LandingPage";
 import ItemList from "./components/ItemList/ItemList";
 import SendRequestForm from "./components/SendRequestForm/SendRequestForm";
@@ -13,6 +12,7 @@ import ItemHistory from "./components/ItemHistory/ItemHistory";
 import TokenService from "./services/token-services";
 import IdleService from "./services/idle-service";
 import AuthApiService from "./services/auth-api-services";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {

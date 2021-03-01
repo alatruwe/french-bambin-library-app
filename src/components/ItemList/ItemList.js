@@ -28,9 +28,9 @@ export default class ItemList extends React.Component {
   render() {
     const items = this.state.items;
     return (
-      <section className="item-list">
-        <h1>Items list</h1>
-        <ul>
+      <section>
+        <h1>Books</h1>
+        <ul className="item-list">
           {items.map((item) => (
             <li key={item.id}>
               <Item
