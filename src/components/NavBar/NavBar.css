@@ -1,22 +1,13 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-body {
-  font-family: "Josefin Sans", sans-serif;
-}
 .navbar {
-  font-size: 18px;
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 10px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: calc(5vw + 5px);
 }
 .nav-links,
 .logo {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: "Montserrat", sans-serif;
+}
+.nav-links:visited {
+  color: black;
 }
 
 .main-nav {
@@ -37,13 +28,51 @@ body {
   top: 10px;
   right: 20px;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.8);
   font-size: 24px;
 }
 
 .active {
   display: block;
   text-align: center;
+}
+
+/* rainbow border */
+ul {
+  display: flex;
+  padding-top: 10px;
+}
+li {
+  display: list-item;
+}
+.colorful-border-blue {
+  width: 20vw;
+  height: 10px;
+  background: #5893e0;
+  list-style-type: none;
+}
+.colorful-border-aqua {
+  width: 20vw;
+  height: 10px;
+  background: #43c2c2;
+  list-style-type: none;
+}
+.colorful-border-green {
+  width: 20vw;
+  height: 10px;
+  background: #58e55c;
+  list-style-type: none;
+}
+.colorful-border-yellow {
+  width: 20vw;
+  height: 10px;
+  background: #fcf04e;
+  list-style-type: none;
+}
+.colorful-border-orange {
+  width: 20vw;
+  height: 10px;
+  background: #f25a5f;
+  list-style-type: none;
 }
 
 /* desktop view */

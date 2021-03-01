@@ -67,13 +67,22 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar">
-        <span className="navbar-toggle" onClick={this.toggleClass}>
-          <i className="fas fa-bars"></i>
-        </span>
-        <div className="logo">logo</div>
-        {this.props.auth ? this.renderLogoutNav() : this.renderLoginNav()}
-      </nav>
+      <>
+        <nav className="navbar">
+          <span className="navbar-toggle" onClick={this.toggleClass}>
+            <i className="fas fa-bars"></i>
+          </span>
+          <div className="logo">logo</div>
+          {this.props.auth ? this.renderLogoutNav() : this.renderLoginNav()}
+        </nav>{" "}
+        <ul className="colorful-border">
+          <li className="colorful-border-blue"></li>
+          <li className="colorful-border-aqua"></li>
+          <li className="colorful-border-green"></li>
+          <li className="colorful-border-yellow"></li>
+          <li className="colorful-border-orange"></li>
+        </ul>
+      </>
     );
   }
 }
