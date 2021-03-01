@@ -57,13 +57,10 @@ class Item extends React.Component {
     return (
       <section>
         <h2>{this.props.title}</h2>
-        <img src={this.props.image} width="250" height="250" />
         <p>{this.props.description}</p>
-
         {this.props.userHistory
           ? this.renderDeleteButton()
           : this.renderRequestButton()}
-
         {this.state.deleted && <p>Deleted!</p>}
       </section>
     );

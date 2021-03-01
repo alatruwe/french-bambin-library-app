@@ -24,7 +24,6 @@ export default class ItemHistory extends React.Component {
 
   render() {
     const items = this.state.items;
-    let source = config.IMAGE_URL;
     return (
       <section className="item-list">
         <h1>Items history</h1>
@@ -33,7 +32,6 @@ export default class ItemHistory extends React.Component {
             <li key={item.id}>
               <Item
                 title={item.title}
-                image={source + item.image}
                 description={item.description}
                 id={item.id}
                 userHistory={true}

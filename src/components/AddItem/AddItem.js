@@ -8,10 +8,7 @@ export default class AddItem extends Component {
     this.state = {
       title: "",
       description: "",
-      image: "",
-      src: "",
       touched: false,
-      upload: false,
       added: false,
       error: null,
     };
@@ -22,7 +19,6 @@ export default class AddItem extends Component {
     },
     title: "",
     description: "",
-    image: "",
   };
 
   // form name validation
@@ -49,44 +45,31 @@ export default class AddItem extends Component {
     }
   }
 
-  // image validation
-  validateItemPicture() {
-    const picture = this.state.upload;
-    if (picture === false) {
-      return "Please add a picture";
-    }
-  }
-
   // handle submit
   handleSubmit = (e) => {
     e.preventDefault();
 
     // get media info
-    const file = this.state.image;
     const title = this.state.title;
     const description = this.state.description;
-    // build form data
-    const fd = new FormData();
-    fd.append("image", file);
-    fd.append("title", title);
-    fd.append("description", description);
+    let item = {
+      title: title,
+      description: description,
+    };
 
     // API POST request
-    ItemsApiService.postitem(fd)
+    ItemsApiService.postitem(item)
       // reset form fields
-      .then((res) => {
+      .then(() => {
         e.target.title.value = "";
         e.target.description.value = "";
-        e.target.image.value = "";
       })
       // change state
       .then(() => {
         this.setState({
           title: "",
           description: "",
-          image: "",
           touched: false,
-          upload: false,
           added: true,
           error: null,
         });
@@ -96,22 +79,9 @@ export default class AddItem extends Component {
       });
   };
 
-  // picture preview
-  loadPicture = (event) => {
-    const image = event.target.files[0];
-    const src = URL.createObjectURL(image);
-    this.setState({ image: image, src: src, upload: true, touched: true });
-  };
-
-  handleDeletePicture = () => {
-    this.setState({ image: "", upload: false, touched: false });
-  };
-
   render() {
     const titleError = this.validateItemTitle();
     const contentError = this.validateItemDescription();
-    const pictureError = this.validateItemPicture();
-    const src = this.state.src;
 
     return (
       <section>
@@ -138,27 +108,12 @@ export default class AddItem extends Component {
             />
             {this.state.touched && <ValidationError message={contentError} />}
           </div>
-          <div>
-            <label htmlFor="image">Add a picture:</label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/png, image/jpeg"
-              onChange={this.loadPicture}
-            />
-            {this.state.touched && <ValidationError message={pictureError} />}
-            {this.state.upload && (
-              <PicturePreview src={src} delete={this.handleDeletePicture} />
-            )}
-          </div>
+
           <div className="button">
             <button
               type="submit"
               disabled={
-                this.validateItemTitle() ||
-                this.validateItemDescription() ||
-                this.validateItemPicture()
+                this.validateItemTitle() || this.validateItemDescription()
               }
             >
               Add item
