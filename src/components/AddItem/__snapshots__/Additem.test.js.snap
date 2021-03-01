@@ -39,20 +39,6 @@ exports[`AddItem component renders the UI as expected 1`] = `
         value=""
       />
     </div>
-    <div>
-      <label
-        htmlFor="image"
-      >
-        Add a picture:
-      </label>
-      <input
-        accept="image/png, image/jpeg"
-        id="image"
-        name="image"
-        onChange={[Function]}
-        type="file"
-      />
-    </div>
     <div
       className="button"
     >
