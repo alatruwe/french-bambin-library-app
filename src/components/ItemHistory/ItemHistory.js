@@ -26,8 +26,8 @@ export default class ItemHistory extends React.Component {
     const items = this.state.items;
     return (
       <section className="item-list">
-        <h1>Items history</h1>
-        <ul>
+        <h1>Books history</h1>
+        <ul className="item-list">
           {items.map((item) => (
             <li key={item.id}>
               <Item
