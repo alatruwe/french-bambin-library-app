@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-services";
 import TokenService from "../../services/token-services";
 import ValidationError from "../ValidationError/ValidationError.js";
+import ButtonStyling from "../../services/buttons-styling-services";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -77,8 +78,8 @@ class LoginForm extends Component {
   renderDemo() {
     return (
       <div>
-        <p>Demo email: bill@email.com</p>
-        <p>Demo password: 22AAaa@@</p>
+        <p className="demo">Demo email: bill@email.com</p>
+        <p className="demo">Demo password: 22AAaa@@</p>
       </div>
     );
   }
@@ -88,40 +89,53 @@ class LoginForm extends Component {
     const passwordError = this.validatePassword();
 
     return (
-      <form onSubmit={this.handleSubmitJwtAuth}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            onChange={(e) => this.updateEmail(e.target.value)}
-          />
-          {this.state.email.touched && <ValidationError message={emailError} />}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={(e) => this.updatePassword(e.target.value)}
-          />
-          {this.state.password.touched && (
-            <ValidationError message={passwordError} />
-          )}
-        </div>
+      <section className="wrapper">
+        <h1 className="form-title">
+          <span>Log In</span>
+        </h1>
+        <div className="form">
+          <form className="form-details" onSubmit={this.handleSubmitJwtAuth}>
+            <div>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
+                className="rounded-input"
+                onChange={(e) => this.updateEmail(e.target.value)}
+              />
+              {this.state.email.touched && (
+                <ValidationError message={emailError} />
+              )}
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="rounded-input"
+                onChange={(e) => this.updatePassword(e.target.value)}
+              />
+              {this.state.password.touched && (
+                <ValidationError message={passwordError} />
+              )}
+            </div>
 
-        <div>
-          <button
-            type="submit"
-            disabled={this.validateEmail() || this.validatePassword()}
-          >
-            Log In
-          </button>
+            <div className="form-btn">
+              <button
+                type="submit"
+                className="btn"
+                style={{ color: ButtonStyling.buttonColor() }}
+                disabled={this.validateEmail() || this.validatePassword()}
+              >
+                Log In
+              </button>
+            </div>
+            {this.props.location.demo ? this.renderDemo() : <></>}
+          </form>
         </div>
-        {this.props.location.demo ? this.renderDemo() : <></>}
-      </form>
+      </section>
     );
   }
 }

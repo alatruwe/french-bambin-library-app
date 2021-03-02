@@ -1,9 +1,10 @@
-section {
-  min-height: 200px;
-  padding: 30px 15px;
-  background-color: #bbb;
-}
-
-section:nth-child(even) {
-  background-color: #ddd;
+.text-intro {
+  line-height: 1.5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: calc(5vw + 16px);
 }

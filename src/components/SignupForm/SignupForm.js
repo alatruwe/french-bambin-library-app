@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-services";
 import TokenService from "../../services/token-services";
 import ValidationError from "../ValidationError/ValidationError.js";
+import ButtonStyling from "../../services/buttons-styling-services";
 
 class SignupForm extends Component {
   constructor(props) {
@@ -130,82 +131,98 @@ class SignupForm extends Component {
     const repeatPasswordError = this.validateRepeatPassword();
 
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="name">First name :</label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            onChange={(e) => this.updateFirstName(e.target.value)}
-          />
-          {this.state.firstName.touched && (
-            <ValidationError message={firstNameError} />
-          )}
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Last name :</label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            onChange={(e) => this.updateLastName(e.target.value)}
-          />
-          {this.state.lastName.touched && (
-            <ValidationError message={lastNameError} />
-          )}
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Email :</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            onChange={(e) => this.updateEmail(e.target.value)}
-          />
-          {this.state.email.touched && <ValidationError message={emailError} />}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password *</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={(e) => this.updatePassword(e.target.value)}
-          />
+      <section className="wrapper">
+        <h1 className="form-title">
+          <span>Sign Up</span>
+        </h1>
+        <div className="form">
+          <form className="form-details" onSubmit={(e) => this.handleSubmit(e)}>
+            <div>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                placeholder="First name"
+                className="rounded-input"
+                onChange={(e) => this.updateFirstName(e.target.value)}
+              />
+              {this.state.firstName.touched && (
+                <ValidationError message={firstNameError} />
+              )}
+            </div>
+            <div>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Last name"
+                className="rounded-input"
+                onChange={(e) => this.updateLastName(e.target.value)}
+              />
+              {this.state.lastName.touched && (
+                <ValidationError message={lastNameError} />
+              )}
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                className="rounded-input"
+                onChange={(e) => this.updateEmail(e.target.value)}
+              />
+              {this.state.email.touched && (
+                <ValidationError message={emailError} />
+              )}
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="rounded-input"
+                onChange={(e) => this.updatePassword(e.target.value)}
+              />
 
-          {this.state.password.touched && (
-            <ValidationError message={passwordError} />
-          )}
-        </div>
-        <div className="form-group">
-          <label htmlFor="repeatPassword">Repeat Password *</label>
-          <input
-            type="password"
-            name="repeatPassword"
-            id="repeatPassword"
-            onChange={(e) => this.updateRepeatPassword(e.target.value)}
-          />
-          {this.state.repeatPassword.touched && (
-            <ValidationError message={repeatPasswordError} />
-          )}
-        </div>
+              {this.state.password.touched && (
+                <ValidationError message={passwordError} />
+              )}
+            </div>
+            <div>
+              <input
+                type="password"
+                name="repeatPassword"
+                id="repeatPassword"
+                placeholder="Repeat passord"
+                className="rounded-input"
+                onChange={(e) => this.updateRepeatPassword(e.target.value)}
+              />
+              {this.state.repeatPassword.touched && (
+                <ValidationError message={repeatPasswordError} />
+              )}
+            </div>
 
-        <div className="registration__button__group">
-          <button
-            type="submit"
-            disabled={
-              this.validateFirstName() ||
-              this.validateLastName() ||
-              this.validateEmail() ||
-              this.validatePassword() ||
-              this.validateRepeatPassword()
-            }
-          >
-            Sign Up!
-          </button>
+            <div className="form-btn">
+              <button
+                type="submit"
+                className="btn"
+                style={{ color: ButtonStyling.buttonColor() }}
+                disabled={
+                  this.validateFirstName() ||
+                  this.validateLastName() ||
+                  this.validateEmail() ||
+                  this.validatePassword() ||
+                  this.validateRepeatPassword()
+                }
+              >
+                Sign Up!
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </section>
     );
   }
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ItemsApiService from "../../services/items-api-services";
-
+import "./Item.css";
+import ButtonStyling from "../../services/buttons-styling-services";
 class Item extends React.Component {
   constructor(props) {
     super(props);
@@ -39,14 +40,28 @@ class Item extends React.Component {
   renderDeleteButton() {
     return (
       <div>
-        <button onClick={this.handleDeleteItem}>Delete item</button>
+        <button
+          className="btn"
+          type="button"
+          style={{ color: ButtonStyling.buttonColor() }}
+          onClick={this.handleDeleteItem}
+        >
+          Delete item
+        </button>
       </div>
     );
   }
   renderRequestButton() {
     return (
       <div>
-        <button type="button" onClick={(e) => this.handleSendRequest(e)}>
+        <button
+          className="btn"
+          type="button"
+          style={{
+            color: ButtonStyling.buttonColor(),
+          }}
+          onClick={(e) => this.handleSendRequest(e)}
+        >
           Send a request
         </button>
       </div>
@@ -55,13 +70,16 @@ class Item extends React.Component {
 
   render() {
     return (
-      <section>
-        <h2>{this.props.title}</h2>
-        <p>{this.props.description}</p>
-        {this.props.userHistory
-          ? this.renderDeleteButton()
-          : this.renderRequestButton()}
-        {this.state.deleted && <p>Deleted!</p>}
+      <section className="item">
+        <div className="vertical-border"></div>
+        <div className="item-details">
+          <h3 className="item-title">{this.props.title}</h3>
+          <p className="item-text">{this.props.description}</p>
+          {this.props.userHistory
+            ? this.renderDeleteButton()
+            : this.renderRequestButton()}
+          {this.state.deleted && <p>Deleted!</p>}
+        </div>
       </section>
     );
   }

@@ -1,0 +1,79 @@
+.vertical-border {
+  display: inline-block;
+  font-size: calc(5vw + 16px);
+  line-height: 0.9;
+  margin: 0 0.2em;
+  width: 1.5vw;
+  border-left: 0.2em solid rgba(0, 0, 0, 0);
+  background: linear-gradient(#fff, #fff) padding-box,
+    repeating-linear-gradient(
+        -65deg,
+        #5461c8 12.5vw,
+        #c724b1 0 25vw,
+        #e4002b 0 37.5vw,
+        #ff6900 0 50vw,
+        #f6be00 0 62.5vw,
+        #97d700 0 75vw,
+        #00ab84 0 87.5vw,
+        #00a3e0 0 100vw
+      )
+      border-box;
+  background-size: 200vw 100vh;
+  background-attachment: fixed;
+}
+
+.item {
+  display: flex;
+}
+.vertical-border {
+  display: flex;
+  flex-direction: column;
+}
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+.item-title {
+  font-size: 25px;
+}
+.item-text {
+  line-height: 1.5;
+  padding: 3% 0;
+}
+
+.btn {
+  width: auto;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+}
+.btn:after {
+  content: "";
+  display: block;
+  width: 0%;
+  padding-top: 5px;
+  border-bottom: 1px solid black;
+  transition: 0.5s;
+}
+
+.btn:hover:after,
+.btn:focus:after {
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .vertical-border {
+    font-size: calc(3vw + 3px);
+  }
+  .item-title {
+    font-size: 27px;
+  }
+  .item-text,
+  .demo {
+    font-size: 20px;
+    line-height: 2;
+  }
+  .btn {
+    font-size: 20px;
+  }
+}

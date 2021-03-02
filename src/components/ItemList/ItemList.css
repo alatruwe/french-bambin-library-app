@@ -1,3 +1,8 @@
-.item-list ul {
+.item-list li {
   list-style-type: none;
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
 }

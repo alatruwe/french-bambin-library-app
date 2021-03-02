@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
 import ItemsApiService from "../../services/items-api-services";
+import ButtonStyling from "../../services/buttons-styling-services";
 
 export default class SendRequest extends Component {
   constructor(props) {
@@ -91,46 +92,54 @@ export default class SendRequest extends Component {
     const messageError = this.validateMessage();
 
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <div className="form-group">
-          <label htmlFor="text">Object</label>
-          <input
-            type="text"
-            name="subject"
-            value={this.state.subject.value}
-            id="subject"
-            placeholder="I'm interested in your item"
-            required
-            onChange={(e) => this.updateSubject(e.target.value)}
-          />
-          {this.state.subject.touched && (
-            <ValidationError message={subjectError} />
-          )}
-        </div>
-        <div className="form-group">
-          <label htmlFor="text">Message</label>
-          <textarea
-            type="text"
-            name="message"
-            value={this.state.message.value}
-            id="message"
-            onChange={(e) => this.updateMessage(e.target.value)}
-          />
-          {this.state.message.touched && (
-            <ValidationError message={messageError} />
-          )}
-        </div>
+      <section className="wrapper">
+        <h1 className="form-title">
+          <span>Send a request</span>
+        </h1>
+        <form className="form-details" onSubmit={(e) => this.handleSubmit(e)}>
+          <div>
+            <input
+              type="text"
+              name="subject"
+              value={this.state.subject.value}
+              id="subject"
+              placeholder="Subject"
+              className="rounded-input"
+              required
+              onChange={(e) => this.updateSubject(e.target.value)}
+            />
+            {this.state.subject.touched && (
+              <ValidationError message={subjectError} />
+            )}
+          </div>
+          <div>
+            <textarea
+              type="text"
+              name="message"
+              value={this.state.message.value}
+              id="message"
+              placeholder="Message"
+              className="rounded-input"
+              onChange={(e) => this.updateMessage(e.target.value)}
+            />
+            {this.state.message.touched && (
+              <ValidationError message={messageError} />
+            )}
+          </div>
 
-        <div>
-          <button
-            type="submit"
-            disabled={this.validateSubject() || this.validateMessage()}
-          >
-            Send
-          </button>
-          {this.state.sent && <p>Sent!</p>}
-        </div>
-      </form>
+          <div className="form-btn">
+            <button
+              type="submit"
+              className="btn"
+              style={{ color: ButtonStyling.buttonColor() }}
+              disabled={this.validateSubject() || this.validateMessage()}
+            >
+              Send
+            </button>
+            {this.state.sent && <p>Sent!</p>}
+          </div>
+        </form>
+      </section>
     );
   }
 }
