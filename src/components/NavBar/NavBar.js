@@ -69,9 +69,9 @@ class NavBar extends Component {
     return (
       <>
         <nav className="navbar">
-          <span className="navbar-toggle" onClick={this.toggleClass}>
+          <div className="navbar-toggle" onClick={this.toggleClass}>
             <i className="fas fa-bars"></i>
-          </span>
+          </div>
           <div className="logo">fbl</div>
           {this.props.auth ? this.renderLogoutNav() : this.renderLoginNav()}
         </nav>{" "}

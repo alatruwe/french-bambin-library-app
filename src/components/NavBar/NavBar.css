@@ -20,7 +20,8 @@
   display: inline-block;
   font-size: 22px;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 50px;
+  font-size: calc(1rem + 2vw);
 }
 
 .navbar-toggle {
@@ -41,11 +42,11 @@ ul {
 }
 
 /* desktop view */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .navbar {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 0;
+    padding: 20px;
     height: 70px;
     align-items: center;
   }
@@ -58,7 +59,8 @@ ul {
   }
 
   .nav-links {
-    margin-left: 40px;
+    margin: 40px;
+    font-size: calc(1rem + 0.7vw);
   }
   .logo {
     margin-top: 0;
