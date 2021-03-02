@@ -119,6 +119,7 @@ export default class SendRequest extends Component {
                 name="message"
                 value={this.state.message.value}
                 id="message"
+                rows="10"
                 placeholder="Message"
                 className="rounded-input"
                 onChange={(e) => this.updateMessage(e.target.value)}
