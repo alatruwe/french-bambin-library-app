@@ -3,7 +3,15 @@ The french bambin library is a french books platform exchange.
 It helps connect parents to find and share french learning materials.
 
 ## Screenshots
-To be added soon
+
+![signup page](screenshots/signup-page.jpg)
+
+
+![homepage](screenshots/homepage.jpg)
+Browse books and send a request when you find one you like.
+
+![send a request](screenshots/send-request.jpg)
+An email is sent to connect with the owner of the book.
 
 ## Features to come:
 * Upload pictures of the books
