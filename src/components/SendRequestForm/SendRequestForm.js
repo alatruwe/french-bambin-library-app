@@ -96,49 +96,51 @@ export default class SendRequest extends Component {
         <h1 className="form-title">
           <span>Send a request</span>
         </h1>
-        <form className="form-details" onSubmit={(e) => this.handleSubmit(e)}>
-          <div>
-            <input
-              type="text"
-              name="subject"
-              value={this.state.subject.value}
-              id="subject"
-              placeholder="Subject"
-              className="rounded-input"
-              required
-              onChange={(e) => this.updateSubject(e.target.value)}
-            />
-            {this.state.subject.touched && (
-              <ValidationError message={subjectError} />
-            )}
-          </div>
-          <div>
-            <textarea
-              type="text"
-              name="message"
-              value={this.state.message.value}
-              id="message"
-              placeholder="Message"
-              className="rounded-input"
-              onChange={(e) => this.updateMessage(e.target.value)}
-            />
-            {this.state.message.touched && (
-              <ValidationError message={messageError} />
-            )}
-          </div>
+        <div className="form">
+          <form className="form-details" onSubmit={(e) => this.handleSubmit(e)}>
+            <div>
+              <input
+                type="text"
+                name="subject"
+                value={this.state.subject.value}
+                id="subject"
+                placeholder="Subject"
+                className="rounded-input"
+                required
+                onChange={(e) => this.updateSubject(e.target.value)}
+              />
+              {this.state.subject.touched && (
+                <ValidationError message={subjectError} />
+              )}
+            </div>
+            <div>
+              <textarea
+                type="text"
+                name="message"
+                value={this.state.message.value}
+                id="message"
+                placeholder="Message"
+                className="rounded-input"
+                onChange={(e) => this.updateMessage(e.target.value)}
+              />
+              {this.state.message.touched && (
+                <ValidationError message={messageError} />
+              )}
+            </div>
 
-          <div className="form-btn">
-            <button
-              type="submit"
-              className="btn"
-              style={{ color: ButtonStyling.buttonColor() }}
-              disabled={this.validateSubject() || this.validateMessage()}
-            >
-              Send
-            </button>
-            {this.state.sent && <p>Sent!</p>}
-          </div>
-        </form>
+            <div className="form-btn">
+              <button
+                type="submit"
+                className="btn"
+                style={{ color: ButtonStyling.buttonColor() }}
+                disabled={this.validateSubject() || this.validateMessage()}
+              >
+                Send
+              </button>
+              {this.state.sent && <p>Sent!</p>}
+            </div>
+          </form>
+        </div>
       </section>
     );
   }
