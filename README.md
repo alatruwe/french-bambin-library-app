@@ -7,13 +7,14 @@ To be added soon
 
 ## Features to come:
 * Upload pictures of the books
-* Search bar to look for a specific book
+* Searchbar to look for a specific book
+* Translate French/English option
 
 ## Built with
-* HTML
-* CSS
-* Javascript
 * React
+* Javascript
+* CSS
+* HTML
 
 ## Live App
 - [Click here](https://french-bambin-library-app.vercel.app/)
