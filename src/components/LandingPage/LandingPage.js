@@ -7,12 +7,12 @@ class LandingPage extends Component {
       <div>
         <header className="wrapper">
           <h1 className="text-intro">
-            <p>French</p>
-            <p>Bambin</p>
-            <p>Library</p>{" "}
+            <p className="title">French</p>
+            <p className="title">Bambin</p>
+            <p className="title">Library</p>{" "}
           </h1>
           <h2 className="text-intro">
-            Sharing french culture one book at a time
+            Sharing french culture, one book at a time
           </h2>
         </header>{" "}
         <section className="wrapper">

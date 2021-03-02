@@ -28,6 +28,9 @@ h2 {
   font-size: calc(5vw + 5px);
   font-family: "Montserrat", sans-serif;
 }
+h3 {
+  font-size: calc(5vw + 16px);
+}
 p {
   line-height: 1.5;
   padding: 3% 0;
@@ -76,7 +79,6 @@ li {
 span {
   font-family: "Montserrat", sans-serif;
   display: inline-block;
-  font-size: calc(5vw + 16px);
   line-height: 0.9;
   margin: 0.2em 0;
   border-bottom: 0.2em solid rgba(0, 0, 0, 0);
@@ -134,4 +136,34 @@ span {
 .btn:hover:after,
 .btn:focus:after {
   width: 100%;
+}
+
+/* Desktop view */
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: calc(3vw + 3px);
+    margin: 10px 0px;
+    padding-top: 20px;
+  }
+  .title {
+    font-size: calc(5vw + 5px);
+    line-height: 0.5;
+  }
+  .text-intro {
+    font-size: calc(3.5vw + 3.5px);
+    padding-bottom: 6%;
+  }
+  h3 {
+    font-size: calc(3vw + 3px);
+  }
+  p {
+    font-size: calc(2vw + 2px);
+  }
+  .form {
+    width: 45%;
+    margin: auto;
+  }
+  .form-title {
+    font-size: calc(3vw + 3px);
+  }
 }

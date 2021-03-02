@@ -60,3 +60,20 @@
 .btn:focus:after {
   width: 100%;
 }
+
+@media screen and (min-width: 1024px) {
+  .vertical-border {
+    font-size: calc(3vw + 3px);
+  }
+  .item-title {
+    font-size: 27px;
+  }
+  .item-text,
+  .demo {
+    font-size: 20px;
+    line-height: 2;
+  }
+  .btn {
+    font-size: 20px;
+  }
+}

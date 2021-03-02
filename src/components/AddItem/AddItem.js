@@ -109,6 +109,7 @@ export default class AddItem extends Component {
                 name="description"
                 placeholder="Description"
                 className="rounded-input"
+                rows="10"
                 value={this.state.description}
                 onChange={(e) => this.updateItemDescription(e.target.value)}
               />

@@ -78,8 +78,8 @@ class LoginForm extends Component {
   renderDemo() {
     return (
       <div>
-        <p>Demo email: bill@email.com</p>
-        <p>Demo password: 22AAaa@@</p>
+        <p className="demo">Demo email: bill@email.com</p>
+        <p className="demo">Demo password: 22AAaa@@</p>
       </div>
     );
   }
@@ -93,7 +93,7 @@ class LoginForm extends Component {
         <h1 className="form-title">
           <span>Log In</span>
         </h1>
-        <div>
+        <div className="form">
           <form className="form-details" onSubmit={this.handleSubmitJwtAuth}>
             <div>
               <input

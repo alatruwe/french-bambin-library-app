@@ -135,7 +135,7 @@ class SignupForm extends Component {
         <h1 className="form-title">
           <span>Sign Up</span>
         </h1>
-        <div>
+        <div className="form">
           <form className="form-details" onSubmit={(e) => this.handleSubmit(e)}>
             <div>
               <input
