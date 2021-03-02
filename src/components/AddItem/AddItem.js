@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ValidationError from "../ValidationError/ValidationError.js";
-import PicturePreview from "../PicturePreview/PicturePreview";
+import ButtonStyling from "../../services/buttons-styling-services";
 import ItemsApiService from "../../services/items-api-services";
+import "./AddItem.css";
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
@@ -84,43 +85,51 @@ export default class AddItem extends Component {
     const contentError = this.validateItemDescription();
 
     return (
-      <section>
-        <h2>New Item</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label htmlFor="item-title-input">Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={this.state.title}
-              onChange={(e) => this.updateItemTitle(e.target.value)}
-            />
-            {this.state.touched && <ValidationError message={titleError} />}
-          </div>
-          <div className="field">
-            <label htmlFor="item-content-input">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              value={this.state.description}
-              onChange={(e) => this.updateItemDescription(e.target.value)}
-            />
-            {this.state.touched && <ValidationError message={contentError} />}
-          </div>
+      <section className="wrapper">
+        <h1 className="form-title">
+          <span>New book</span>
+        </h1>
+        <div className="form">
+          <form className="form-details" onSubmit={this.handleSubmit}>
+            <div>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Title"
+                className="rounded-input"
+                value={this.state.title}
+                onChange={(e) => this.updateItemTitle(e.target.value)}
+              />
+              {this.state.touched && <ValidationError message={titleError} />}
+            </div>
+            <div>
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Description"
+                className="rounded-input"
+                value={this.state.description}
+                onChange={(e) => this.updateItemDescription(e.target.value)}
+              />
+              {this.state.touched && <ValidationError message={contentError} />}
+            </div>
 
-          <div className="button">
-            <button
-              type="submit"
-              disabled={
-                this.validateItemTitle() || this.validateItemDescription()
-              }
-            >
-              Add item
-            </button>
-            {this.state.added && <p>Item added!</p>}
-          </div>
-        </form>
+            <div className="form-btn">
+              <button
+                type="submit"
+                className="btn"
+                style={{ color: ButtonStyling.buttonColor() }}
+                disabled={
+                  this.validateItemTitle() || this.validateItemDescription()
+                }
+              >
+                Add item
+              </button>
+              {this.state.added && <p>Item added!</p>}
+            </div>
+          </form>
+        </div>
       </section>
     );
   }

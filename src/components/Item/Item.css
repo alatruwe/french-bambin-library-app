@@ -1,4 +1,4 @@
-.item-vertical-border {
+.vertical-border {
   display: inline-block;
   font-size: calc(5vw + 16px);
   line-height: 0.9;
@@ -25,7 +25,7 @@
 .item {
   display: flex;
 }
-.item-vertical-border {
+.vertical-border {
   display: flex;
   flex-direction: column;
 }
