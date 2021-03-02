@@ -26,11 +26,11 @@ class NavBar extends Component {
         </Link>
         <br />
         <Link to="/add-item" className="nav-links">
-          Add new item
+          Add new book
         </Link>
         <br />
         <Link to="/item-history" className="nav-links">
-          Items history
+          Books history
         </Link>
         <br />
         <Link onClick={this.props.handleLogOut} to="/" className="nav-links">
@@ -72,7 +72,7 @@ class NavBar extends Component {
           <span className="navbar-toggle" onClick={this.toggleClass}>
             <i className="fas fa-bars"></i>
           </span>
-          <div className="logo">logo</div>
+          <div className="logo">fbl</div>
           {this.props.auth ? this.renderLogoutNav() : this.renderLoginNav()}
         </nav>{" "}
         <ul className="colorful-border">

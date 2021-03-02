@@ -7,9 +7,9 @@ class LandingPage extends Component {
       <div>
         <header className="wrapper">
           <h1 className="text-intro">
-            <span>French</span>
-            <span>Bambin</span>
-            <span>Library</span>{" "}
+            <p>French</p>
+            <p>Bambin</p>
+            <p>Library</p>{" "}
           </h1>
           <h2 className="text-intro">
             Sharing french culture one book at a time
@@ -50,11 +50,11 @@ class LandingPage extends Component {
           </p>
         </section>
         <ul className="colorful-border">
-          <li className="colorful-border-blue"></li>
-          <li className="colorful-border-aqua"></li>
-          <li className="colorful-border-green"></li>
-          <li className="colorful-border-yellow"></li>
           <li className="colorful-border-orange"></li>
+          <li className="colorful-border-yellow"></li>
+          <li className="colorful-border-green"></li>
+          <li className="colorful-border-aqua"></li>
+          <li className="colorful-border-blue"></li>
         </ul>
       </div>
     );

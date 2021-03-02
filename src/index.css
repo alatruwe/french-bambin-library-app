@@ -1,13 +1,137 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Raleway", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.wrapper {
+  margin: auto;
+  width: 65%;
+}
+section {
+  padding: 30px 0px;
+}
+
+/* text and titles styling */
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: calc(5vw + 16px);
+  text-align: center;
+}
+h2 {
+  font-size: calc(5vw + 5px);
+  font-family: "Montserrat", sans-serif;
+}
+p {
+  line-height: 1.5;
+  padding: 3% 0;
+  text-align: justify;
+}
+
+/* rainbow static border */
+ul {
+  display: flex;
+}
+li {
+  display: list-item;
+}
+.colorful-border-blue {
+  width: 20vw;
+  height: 10px;
+  background: #5893e0;
+  list-style-type: none;
+}
+.colorful-border-aqua {
+  width: 20vw;
+  height: 10px;
+  background: #43c2c2;
+  list-style-type: none;
+}
+.colorful-border-green {
+  width: 20vw;
+  height: 10px;
+  background: #58e55c;
+  list-style-type: none;
+}
+.colorful-border-yellow {
+  width: 20vw;
+  height: 10px;
+  background: #fcf04e;
+  list-style-type: none;
+}
+.colorful-border-orange {
+  width: 20vw;
+  height: 10px;
+  background: #f25a5f;
+  list-style-type: none;
+}
+
+/* rainbow dynamic border */
+span {
+  font-family: "Montserrat", sans-serif;
+  display: inline-block;
+  font-size: calc(5vw + 16px);
+  line-height: 0.9;
+  margin: 0.2em 0;
+  border-bottom: 0.2em solid rgba(0, 0, 0, 0);
+  background: linear-gradient(#fff, #fff) padding-box,
+    repeating-linear-gradient(
+        -65deg,
+        #5461c8 12.5vw,
+        #c724b1 0 25vw,
+        #e4002b 0 37.5vw,
+        #ff6900 0 50vw,
+        #f6be00 0 62.5vw,
+        #97d700 0 75vw,
+        #00ab84 0 87.5vw,
+        #00a3e0 0 100vw
+      )
+      border-box;
+  background-size: 200vw 100vh;
+  background-attachment: fixed;
+}
+
+/* forms */
+.form {
+  display: flex;
+}
+.form-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.form-btn {
+  text-align: center;
+}
+
+/* buttons */
+.rounded-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.btn {
+  width: auto;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+}
+.btn:after {
+  content: "";
+  display: block;
+  width: 0%;
+  padding-top: 5px;
+  border-bottom: 1px solid black;
+  transition: 0.5s;
+}
+.btn:hover:after,
+.btn:focus:after {
+  width: 100%;
 }

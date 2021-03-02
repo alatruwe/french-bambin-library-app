@@ -25,7 +25,7 @@ export default class ItemHistory extends React.Component {
   render() {
     const items = this.state.items;
     return (
-      <section className="item-list">
+      <section className="wrapper">
         <h1>Books history</h1>
         <ul className="item-list">
           {items.map((item) => (

@@ -1,14 +1,4 @@
-section {
-  padding: 30px 0px;
-}
-
-.wrapper {
-  margin: auto;
-  width: 65%;
-}
-
 .text-intro {
-  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -17,31 +7,4 @@ section {
   justify-content: space-between;
   align-items: flex-start;
   font-size: calc(5vw + 16px);
-}
-
-h2 {
-  font-size: calc(5vw + 5px);
-}
-
-h3 span {
-  display: inline-block;
-  font-size: calc(5vw + 16px);
-  line-height: 0.9;
-  margin: 0.2em 0;
-  border-bottom: 0.2em solid rgba(0, 0, 0, 0);
-  background: linear-gradient(#fff, #fff) padding-box,
-    repeating-linear-gradient(
-        -65deg,
-        #5461c8 12.5vw,
-        #c724b1 0 25vw,
-        #e4002b 0 37.5vw,
-        #ff6900 0 50vw,
-        #f6be00 0 62.5vw,
-        #97d700 0 75vw,
-        #00ab84 0 87.5vw,
-        #00a3e0 0 100vw
-      )
-      border-box;
-  background-size: 200vw 100vh;
-  background-attachment: fixed;
 }
