@@ -4,14 +4,17 @@ It helps connect parents to find and share french learning materials.
 
 ## Screenshots
 
+Sign up to get access to the library!
 ![signup page](screenshots/signup-page.jpg)
 
 
-![homepage](screenshots/homepage.jpg)
 Browse books and send a request when you find one you like.
+![homepage](screenshots/homepage.jpg)
 
-![send a request](screenshots/send-request.jpg)
+
 An email is sent to connect with the owner of the book.
+![send a request](screenshots/send-request.jpg)
+
 
 ## Features to come:
 * Upload pictures of the books
