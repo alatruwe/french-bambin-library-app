@@ -109,7 +109,6 @@ class App extends Component {
         <Route path="/home" component={ItemList} />
         <Route path="/request" component={SendRequestForm} />
         <Route path="/add-item" component={AddItem} />
-        <Route path="/request-history" component={RequestHistory} />
         <Route path="/item-history" component={ItemHistory} />
       </BrowserRouter>
     );
