@@ -7,7 +7,6 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import ItemList from "./components/ItemList/ItemList";
 import SendRequestForm from "./components/SendRequestForm/SendRequestForm";
 import AddItem from "./components/AddItem/AddItem";
-import RequestHistory from "./components/RequestHistory/RequestHistory";
 import ItemHistory from "./components/ItemHistory/ItemHistory";
 import TokenService from "./services/token-services";
 import IdleService from "./services/idle-service";
